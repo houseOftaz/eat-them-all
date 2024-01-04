@@ -1,0 +1,30 @@
+body {
+    background-color: #36883c;
+    color: #ffffff;
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#gameArea {
+    position: relative;
+    width: 800px; /* adjust as needed */
+    height: 700px; /* adjust as needed */
+    background-color: #f0f0f0; /* background of your game area */
+}
+#character {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px; /* adjust based on your image size */
+    height: auto;
+    /* Add more styles as needed */
+}
