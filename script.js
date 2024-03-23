@@ -1,41 +1,20 @@
-let isJumping = false; // Déclaration globale
+let character = document.getElementById('character')
+let translatedValue = 0
 
-document.addEventListener('keydown', function(event) {
-    const character = document.getElementById('character');
-    let left = character.offsetLeft;
-    const jumpHeight = 20; // Hauteur de saut ajustable
+document.addEventListener('keydown', (e) => {
 
-    if (event.key === 'ArrowLeft') {
-        left -= 10;
-    } else if (event.key === 'ArrowRight') {
-        left += 10;
+    if (e.key === " ") {
+        character.style.transform = 'translateY(-300%)'
+
+        setTimeout(() => {
+            character.style.transform = 'translateY(0)'
+        }, 500)
+    } else if (e.key === "ArrowLeft") {
+        translatedValue -= 100
+        character.style.transform = `translateX(${translatedValue}%)`
+    } else if (e.key === "ArrowRight") {
+        translatedValue += 100
+        character.style.transform = `translateX(${translatedValue}%)`
     }
 
-    character.style.left = left + 'px';
-
-    if (event.key === 'Space') {
-        event.preventDefault(); // Empêche le défilement de la page
-        if (!isJumping) {
-            isJumping = true;
-            let bottom = parseInt(character.style.bottom) || 0;
-
-            let upInterval = setInterval(() => {
-                if (bottom < jumpHeight) {
-                    bottom += 5;
-                    character.style.bottom = bottom + 'px';
-                } else {
-                    clearInterval(upInterval);
-                    let downInterval = setInterval(() => {
-                        if (bottom > 0) {
-                            bottom -= 5;
-                            character.style.bottom = bottom + 'px';
-                        } else {
-                            clearInterval(downInterval);
-                            isJumping = false;
-                        }
-                    }, 20);
-                }
-            }, 20);
-        }
-    }
-});
+})
